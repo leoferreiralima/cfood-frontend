@@ -11,6 +11,7 @@ export interface ILogin {
 
 export interface SessionState {
   readonly token: string;
+  readonly isAuthenticated: boolean;
   readonly loading: boolean;
   readonly error: boolean;
 }

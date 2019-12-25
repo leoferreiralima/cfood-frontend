@@ -4,7 +4,8 @@ import { Reducer } from "redux";
 const INITIAL_STATE: SessionState = {
   token: "",
   loading: false,
-  error: false
+  error: false,
+  isAuthenticated: false
 };
 
 const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
@@ -16,10 +17,17 @@ const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        token: action.payload
+        token: action.payload,
+        isAuthenticated: true
       };
     case SessionType.LOGIN_FAILURE:
-      return { ...state, loading: false, error: true };
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        token: "",
+        isAuthenticated: false
+      };
     default:
       return state;
   }

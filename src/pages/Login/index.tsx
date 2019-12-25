@@ -1,16 +1,15 @@
 import React from "react";
+import { Dispatch, bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { Form, Input } from "@rocketseat/unform";
 
 import * as SessionActions from "./../../store/ducks/session/actions";
 import { SessionState, ILogin } from "./../../store/ducks/session/types";
-import { Dispatch, bindActionCreators } from "redux";
 
-import { Form, Input } from "@rocketseat/unform";
-import { connect } from "react-redux";
 import { ApplicationState } from "../../store";
+import { Redirect } from "react-router";
 
-interface StateProps {
-  session: SessionState;
-}
+interface StateProps extends SessionState {}
 
 interface DispatchProps {
   loginRequest(data: ILogin): void;
@@ -18,7 +17,12 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-const Login: React.FC<Props> = ({ session, loginRequest }) => {
+const Login: React.FC<Props> = ({
+  loading,
+  error,
+  isAuthenticated,
+  loginRequest
+}) => {
   const handleSubmit = ({ username, password }: any) => {
     loginRequest({ username, password });
   };
@@ -32,14 +36,25 @@ const Login: React.FC<Props> = ({ session, loginRequest }) => {
         <br />
         <button type="submit">Send</button>
       </Form>
-      {session.loading && "carregando"} <br />
-      {session.error && "error"}
+      {isAuthenticated && (
+        <Redirect
+          to={{
+            pathname: "/dashboard"
+          }}
+        ></Redirect>
+      )}
+      {loading && "carregando"} <br />
+      {error && "error"}
     </div>
   );
 };
 
-const mapStateToProps = ({ session }: ApplicationState) => ({
-  session
+const mapStateToProps = ({
+  session: { loading, error, isAuthenticated }
+}: ApplicationState) => ({
+  loading,
+  error,
+  isAuthenticated
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
