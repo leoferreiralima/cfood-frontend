@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { store } from "./../store";
+import env from "./../util/env";
+
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: env("BACKEND_HOST"),
   withCredentials: true
 });
 
