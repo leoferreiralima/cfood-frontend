@@ -4,9 +4,11 @@ import { RouteProps, Route, RouteComponentProps, Redirect } from "react-router";
 interface PrivateRouteProps extends RouteProps {
   hasAuthorization: boolean;
   redirect?: string;
+  container?: React.ComponentType<any>;
 }
 const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
+  container: Container,
   redirect,
   hasAuthorization,
   ...rest
@@ -15,7 +17,15 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
     {...rest}
     render={(props: RouteComponentProps<any>) =>
       hasAuthorization ? (
-        Component && <Component {...props} />
+        Container ? (
+          Component && (
+            <Container {...props}>
+              <Component {...props} />
+            </Container>
+          )
+        ) : (
+          Component && <Component {...props} />
+        )
       ) : (
         <Redirect
           to={{

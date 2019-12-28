@@ -18,18 +18,17 @@ interface StateProps {
 type Props = StateProps;
 
 const Routes: React.FC<Props> = ({ isAuthenticated }) => {
-  console.log(isAuthenticated);
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/login" component={Login}></Route>
         <PrivateRoute
           exact
           path="/dashboard"
           component={Dashboard}
           hasAuthorization={isAuthenticated}
         ></PrivateRoute>
-        <Route exact path="/login" component={Login}></Route>
-        <Redirect from="/" to="/dashboard"></Redirect>
+        {!isAuthenticated && <Redirect to="/login"></Redirect>}
       </Switch>
     </BrowserRouter>
   );

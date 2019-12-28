@@ -7,6 +7,15 @@ import * as SessionActions from "./../../store/ducks/session/actions";
 import { SessionState, ILogin } from "./../../store/ducks/session/types";
 
 import { ApplicationState } from "../../store";
+
+import { Container, ContainerFluid, Box } from "./styles";
+
+import { FormGroup, Image, InputGroup } from "react-bootstrap";
+import { FaUserAlt, FaLock } from "react-icons/fa";
+
+import Logo from "../../assets/img/logo.png";
+
+import Button from "../../components/Button";
 import { Redirect } from "react-router";
 
 interface StateProps extends SessionState {}
@@ -28,24 +37,64 @@ const Login: React.FC<Props> = ({
   };
 
   return (
-    <div className="Login">
-      <Form onSubmit={handleSubmit}>
-        <Input name="username" label="usuario"></Input>
-        <br />
-        <Input name="password" label="senha" type="password"></Input>
-        <br />
-        <button type="submit">Send</button>
-      </Form>
-      {isAuthenticated && (
-        <Redirect
-          to={{
-            pathname: "/dashboard"
-          }}
-        ></Redirect>
-      )}
-      {loading && "carregando"} <br />
-      {error && "error"}
-    </div>
+    <Container>
+      <ContainerFluid>
+        <Box className="col-lg-4 col-md-6 col-sm-9">
+          <Form onSubmit={handleSubmit}>
+            <FormGroup className="col-md-12">
+              <Image
+                rounded
+                fluid
+                srcSet={Logo}
+                className="mx-auto d-block"
+              ></Image>
+            </FormGroup>
+            <FormGroup className="col-md-10">
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaUserAlt className="text-info" />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <Input
+                  name="username"
+                  className="form-control"
+                  placeholder="Digite seu usuario"
+                ></Input>
+              </InputGroup>
+            </FormGroup>
+            <FormGroup className="col-md-10">
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaLock className="text-info" />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <Input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="Digite sua senha"
+                ></Input>
+              </InputGroup>
+            </FormGroup>
+            <div className="col-md-7">
+              <div className="col-md-12">
+                <Button type="submit" variant="info" block loading={loading}>
+                  Login
+                </Button>
+              </div>
+              <div className="col-md-12 d-flex justify-content-center">
+                <a className="text-info font-weight-bold">
+                  Esqueci minha senha
+                </a>
+              </div>
+            </div>
+          </Form>
+        </Box>
+      </ContainerFluid>
+      {isAuthenticated && <Redirect to="/dashboard"></Redirect>}
+    </Container>
   );
 };
 
