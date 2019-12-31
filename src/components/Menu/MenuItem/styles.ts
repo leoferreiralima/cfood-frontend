@@ -17,12 +17,12 @@ export const Container = styled.li.attrs({
     font-size: 1.15em;
   }
   ${({ active, theme: { primary } }: Props) =>
+    // eslint-disable-next-line
     active
-      ? "box-shadow: 1px 1px 10px #22222277;\
-        background-color: " +
+      ? "box-shadow: 1px 1px 10px #22222277;" +
+        "background-color: " +
         primary.bg +
-        ";\
-        font-size: 1.15em;"
+        ";font-size: 1.15em;"
       : ""}
 `;
 
@@ -39,6 +39,7 @@ export const MenuLink = styled(Link).attrs({
 
   svg {
     align-self: center;
+    margin-right: 2px;
   }
   :hover {
     color: ${({ theme }: Props) => theme.primary.fg};

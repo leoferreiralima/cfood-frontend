@@ -25,7 +25,7 @@ const Menu: React.FC<Props> = ({ routes }) => {
             <MenuItem
               route={route}
               key={route.path}
-              active={route.path === currentPath}
+              active={(route.path === currentPath).valueOf()}
             />
           ))}
         </ul>

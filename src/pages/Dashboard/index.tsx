@@ -8,7 +8,7 @@ interface StateProps extends SessionState {}
 type Props = StateProps;
 
 const Dashboard: React.FC<Props> = ({ profile }) => {
-  return <div>{JSON.stringify(profile)}</div>;
+  return <div className="row col-md-12">{JSON.stringify(profile)}</div>;
 };
 const mapStateToProps = ({ session: { profile } }: ApplicationState) => ({
   profile

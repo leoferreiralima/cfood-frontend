@@ -31,6 +31,15 @@ const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
         profile: undefined,
         isAuthenticated: false
       };
+    case SessionType.LOGOUT_REQUEST:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        token: undefined,
+        profile: undefined,
+        isAuthenticated: false
+      };
     default:
       return state;
   }

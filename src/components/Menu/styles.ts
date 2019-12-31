@@ -16,7 +16,7 @@ export const Container = styled.nav.attrs({
   background-color: ${({ theme: { default: Default } }: Props) => Default.bg};
   box-shadow: 1px 2px 10px #22222270;
   z-index: 100;
-  margin-right: 4px;
+  margin-right: 2px;
 
   overflow: hidden;
   background-image: linear-gradient(

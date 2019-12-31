@@ -20,12 +20,10 @@ export const Container = styled.div`
   #menu.collapse {
     visibility: hidden;
     width: 0px;
-    transition: display 1000ms, visibility 1000ms, width 1000ms;
   }
   #menu.collapse.show {
     visibility: visible;
     width: 250px;
-    transition: display 1000ms, visibility 1000ms, width 1000ms;
   }
 `;
 
@@ -71,7 +69,6 @@ export const ToggleMenu = styled.a`
 export const Content = styled.div`
   width: 100%;
   overflow-y: auto;
-  padding: 2px 2px 2px 4px;
   display: flex;
   flex-direction: column;
 `;
@@ -84,4 +81,6 @@ export const ContainerWrapper = styled.div`
   border: 0;
   display: flex;
 `;
-export const PageContainer = styled.div``;
+export const PageContainer = styled.div`
+  max-width: 100%;
+`;

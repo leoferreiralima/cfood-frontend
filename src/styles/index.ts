@@ -241,18 +241,18 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
     box-shadow: -1px 0px 6px #22222222;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #00000000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #17a2b899;
-    border-radius: 10px;
+    background: ${({ theme }: Props) => theme.primary.bg + "99"};
+    border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #17a2b8cc;
+    background: ${({ theme }: Props) => theme.primary.bg + "cc"};
   }
 `;

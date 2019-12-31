@@ -1,7 +1,8 @@
 export enum SessionType {
   LOGIN_REQUEST = "@session/LOGIN_REQUEST",
   LOGIN_SUCCESS = "@session/LOGIN_SUCCESS",
-  LOGIN_FAILURE = "@session/LOGIN_FAILURE"
+  LOGIN_FAILURE = "@session/LOGIN_FAILURE",
+  LOGOUT_REQUEST = "@session/LOGOUT_REQUEST"
 }
 
 export interface ILogin {

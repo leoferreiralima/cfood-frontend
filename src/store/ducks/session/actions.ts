@@ -8,3 +8,5 @@ export const loginSuccess = (data: ILoginSuccess) =>
   action(SessionType.LOGIN_SUCCESS, data);
 
 export const loginFailure = () => action(SessionType.LOGIN_FAILURE);
+
+export const logoutRequest = () => action(SessionType.LOGOUT_REQUEST);
