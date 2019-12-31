@@ -13,8 +13,8 @@ import rootReducer from "./ducks/rootReducer";
 import rootSaga from "./ducks/rootSaga";
 import localStorage from "redux-persist/es/storage";
 
-import Encryptor from "./../services/encryptor";
-import env from "./../util/env";
+import Encryptor from "@services/encryptor";
+import env from "~/util/env";
 
 export interface ApplicationState {
   session: SessionState;

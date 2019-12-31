@@ -3,19 +3,19 @@ import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Form, Input } from "@rocketseat/unform";
 
-import * as SessionActions from "./../../store/ducks/session/actions";
-import { SessionState, ILogin } from "./../../store/ducks/session/types";
+import * as SessionActions from "@ducks/session/actions";
+import { SessionState, ILogin } from "@ducks/session/types";
 
-import { ApplicationState } from "../../store";
+import { ApplicationState } from "@store/index";
 
 import { Container, ContainerFluid, Box } from "./styles";
 
 import { FormGroup, Image, InputGroup } from "react-bootstrap";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
-import Logo from "../../assets/img/logo.png";
+import Logo from "@assets/img/logo.png";
 
-import Button from "../../components/Button";
+import Button from "@components/Button";
 
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";

@@ -3,16 +3,16 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { ApplicationState } from "./store";
+import { ApplicationState } from "@store/index";
 import { FaHome } from "react-icons/fa";
-import Login from "./pages/Login";
+import Login from "@pages/Login";
 
-import * as SessionActions from "./store/ducks/session/actions";
-import PrivateRoute from "./components/PrivateRoute";
-import Dashboard from "./pages/Dashboard";
+import * as SessionActions from "@ducks/session/actions";
+import PrivateRoute from "@components/PrivateRoute";
+import Dashboard from "@pages/Dashboard";
 import { IconType } from "react-icons/lib/cjs";
 
-import Template from "./pages/Template";
+import Template from "@pages/Template";
 
 interface StateProps {
   isAuthenticated: boolean;

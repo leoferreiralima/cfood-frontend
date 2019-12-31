@@ -21,7 +21,13 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  plugins: ["react", "import", "jsx-a11y", "eslint-plugin-import-helpers"],
+  plugins: [
+    "react",
+    "import",
+    "jsx-a11y",
+    "eslint-plugin-import-helpers",
+    "eslint-import-resolver-babel-plugin-root-import"
+  ],
   rules: {
     "react/jsx-filename-extension": [
       "error",
@@ -55,7 +61,39 @@ module.exports = {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      typescript: {}
+      typescript: {},
+      "babel-plugin-root-import": {
+        paths: [
+          {
+            rootPathSuffix: "src",
+            rootPathPrefix: "~"
+          },
+          {
+            rootPathSuffix: "src/store/ducks",
+            rootPathPrefix: "@ducks"
+          },
+          {
+            rootPathSuffix: "src/services",
+            rootPathPrefix: "@services"
+          },
+          {
+            rootPathSuffix: "src/assets",
+            rootPathPrefix: "@assets"
+          },
+          {
+            rootPathSuffix: "src/pages",
+            rootPathPrefix: "@pages"
+          },
+          {
+            rootPathSuffix: "src/store",
+            rootPathPrefix: "@store"
+          },
+          {
+            rootPathSuffix: "src/components",
+            rootPathPrefix: "@components"
+          }
+        ]
+      }
     }
   }
 };

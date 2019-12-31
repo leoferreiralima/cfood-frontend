@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Background from "../../assets/img/background.svg";
-import { ITheme } from "../../styles/theme";
+import Background from "@assets/img/background.svg";
+import { ITheme } from "~/styles/theme";
 
 interface Props {
   theme: ITheme;

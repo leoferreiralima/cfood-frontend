@@ -1,5 +1,5 @@
 import React from "react";
-import { IRoute } from "../../../routes";
+import { IRoute } from "~/routes";
 
 import { Container, MenuLink } from "./styles";
 

@@ -1,12 +1,13 @@
 import React from "react";
 import { Container, Dropdown, DropdownItem, IconContainer } from "./styles";
 import { FaUserEdit, FaDoorOpen } from "react-icons/fa";
-import { ApplicationState } from "../../../store";
 import { connect } from "react-redux";
-import { IProfile } from "../../../store/ducks/session/types";
 import { Dispatch, bindActionCreators } from "redux";
 
-import * as SessionActions from "../../../store/ducks/session/actions";
+import { ApplicationState } from "@store/index";
+
+import { IProfile } from "@ducks/session/types";
+import * as SessionActions from "@ducks/session/actions";
 
 interface StateProps {
   profile: IProfile | undefined;

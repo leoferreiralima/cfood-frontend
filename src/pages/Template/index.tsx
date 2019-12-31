@@ -6,9 +6,9 @@ import {
   ContainerWrapper,
   PageContainer
 } from "./styles";
-import Menu from "../../components/Menu";
-import AppBar from "../../components/AppBar";
-import { IRoute } from "../../routes";
+import Menu from "@components/Menu";
+import AppBar from "@components/AppBar";
+import { IRoute } from "~/routes";
 import { FaArrowRight } from "react-icons/fa";
 
 interface OwnProps {

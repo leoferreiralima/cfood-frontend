@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Background from "../../assets/img/background.svg";
+import Background from "@assets/img/background.svg";
 
 import { Container as BContainer } from "react-bootstrap";
 

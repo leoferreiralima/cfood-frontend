@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ITheme } from "../../../styles/theme";
+import { ITheme } from "~/styles/theme";
 interface Props {
   active: boolean;
   theme: ITheme;

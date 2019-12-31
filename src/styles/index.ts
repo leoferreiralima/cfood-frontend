@@ -255,4 +255,13 @@ export default createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }: Props) => theme.primary.bg + "cc"};
   }
+
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   80% { transform: rotate(0deg); }
+   85% { transform: rotate(5deg); }
+   95% { transform: rotate(-5deg); }
+   100% { transform: rotate(0deg); }
+  }
+
 `;
