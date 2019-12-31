@@ -9,9 +9,22 @@ export interface ILogin {
   password: string;
 }
 
+export interface ILoginSuccess {
+  token: string;
+  profile: IProfile;
+}
+
+export interface IProfile {
+  id: number;
+  username: string;
+  superUser: boolean;
+  firstName: string;
+  lastName: string;
+}
 export interface SessionState {
-  readonly token: string;
+  readonly token?: string;
   readonly isAuthenticated: boolean;
   readonly loading: boolean;
   readonly error: boolean;
+  readonly profile?: IProfile;
 }

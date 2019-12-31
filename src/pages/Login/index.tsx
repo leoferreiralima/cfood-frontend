@@ -16,7 +16,9 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import Logo from "../../assets/img/logo.png";
 
 import Button from "../../components/Button";
+
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 
 interface StateProps extends SessionState {}
 
@@ -53,7 +55,7 @@ const Login: React.FC<Props> = ({
               <InputGroup className="mb-3">
                 <InputGroup.Prepend>
                   <InputGroup.Text>
-                    <FaUserAlt className="text-info" />
+                    <FaUserAlt className="text-primary" />
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Input
@@ -67,7 +69,7 @@ const Login: React.FC<Props> = ({
               <InputGroup className="mb-3">
                 <InputGroup.Prepend>
                   <InputGroup.Text>
-                    <FaLock className="text-info" />
+                    <FaLock className="text-primary" />
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Input
@@ -80,14 +82,14 @@ const Login: React.FC<Props> = ({
             </FormGroup>
             <div className="col-md-7">
               <div className="col-md-12">
-                <Button type="submit" variant="info" block loading={loading}>
+                <Button type="submit" variant="primary" block loading={loading}>
                   Login
                 </Button>
               </div>
               <div className="col-md-12 d-flex justify-content-center">
-                <a className="text-info font-weight-bold">
+                <Link to="/" className="text-primary font-weight-bold">
                   Esqueci minha senha
-                </a>
+                </Link>
               </div>
             </div>
           </Form>

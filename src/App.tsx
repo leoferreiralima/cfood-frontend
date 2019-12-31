@@ -3,9 +3,8 @@ import { Provider } from "react-redux";
 
 import { PersistGate } from "redux-persist/integration/react";
 
-import { store, persistor } from "./store";
-
 import { ThemeProvider } from "styled-components";
+import { store, persistor } from "./store";
 
 import Routes from "./routes";
 
@@ -13,6 +12,7 @@ import { light } from "./styles/theme";
 import GlobalStyle from "./styles";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 const App = () => (
   <Provider store={store}>

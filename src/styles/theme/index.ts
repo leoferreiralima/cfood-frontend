@@ -3,13 +3,9 @@ interface IBaseTheme {
   fg: string;
 }
 
-interface IMenuTheme extends IBaseTheme {}
-
-interface IButton extends IBaseTheme {}
-
 interface IColor extends IBaseTheme {}
 
-export interface ITheme extends IBaseTheme {
+export interface ITheme {
   success: IColor;
   danger: IColor;
   warning: IColor;
@@ -19,30 +15,28 @@ export interface ITheme extends IBaseTheme {
 }
 
 export const light: ITheme = {
-  bg: "#FFFFFFE5",
-  fg: "#7874f2",
   success: {
-    bg: "#FFFFFFE5",
-    fg: "#7874f2"
+    bg: "#28a745",
+    fg: "#F5F5F5"
   },
   danger: {
-    bg: "#FFFFFFE5",
-    fg: "#7874f2"
+    bg: "#dc3545",
+    fg: "#F5F5F5"
   },
   warning: {
-    bg: "#FFFFFFE5",
-    fg: "#7874f2"
+    bg: "#ffc107",
+    fg: "#F5F5F5"
   },
   primary: {
-    bg: "#FFFFFFE5",
-    fg: "#7874f2"
+    bg: "#7884f2",
+    fg: "#F5F5F5"
   },
   default: {
-    bg: "#FFFFFFE5",
-    fg: "#7874f2"
+    bg: "#F5F5F5",
+    fg: "#7884f2"
   },
   info: {
-    bg: "#7884f2",
+    bg: "#17a2b8",
     fg: "#F5F5F5"
   }
 };

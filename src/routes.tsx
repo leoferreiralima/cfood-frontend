@@ -4,12 +4,15 @@ import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { ApplicationState } from "./store";
-
+import { FaHome } from "react-icons/fa";
 import Login from "./pages/Login";
 
 import * as SessionActions from "./store/ducks/session/actions";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
+import { IconType } from "react-icons/lib/cjs";
+
+import Template from "./pages/Template";
 
 interface StateProps {
   isAuthenticated: boolean;
@@ -17,17 +20,38 @@ interface StateProps {
 
 type Props = StateProps;
 
+export interface IRoute {
+  path: string;
+  container: React.ComponentType<any>;
+  icon: IconType;
+  title: string;
+}
+
 const Routes: React.FC<Props> = ({ isAuthenticated }) => {
+  const privateRoutes: Array<IRoute> = [
+    {
+      path: "/dashboard",
+      title: "Dashboard",
+      container: Dashboard,
+      icon: FaHome
+    }
+  ];
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/login" component={Login}></Route>
-        <PrivateRoute
-          exact
-          path="/dashboard"
-          component={Dashboard}
-          hasAuthorization={isAuthenticated}
-        ></PrivateRoute>
+
+        {isAuthenticated &&
+          privateRoutes.map(({ path, container: component }) => (
+            <Template routes={privateRoutes} key={path}>
+              <PrivateRoute
+                exact
+                path={path}
+                component={component}
+                hasAuthorization={isAuthenticated}
+              ></PrivateRoute>
+            </Template>
+          ))}
         {!isAuthenticated && <Redirect to="/login"></Redirect>}
       </Switch>
     </BrowserRouter>

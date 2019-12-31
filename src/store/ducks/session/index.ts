@@ -2,10 +2,11 @@ import { SessionState, SessionType } from "./types";
 import { Reducer } from "redux";
 
 const INITIAL_STATE: SessionState = {
-  token: "",
+  token: undefined,
   loading: false,
   error: false,
-  isAuthenticated: false
+  isAuthenticated: false,
+  profile: undefined
 };
 
 const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
@@ -17,7 +18,8 @@ const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        token: action.payload,
+        token: action.payload.token,
+        profile: action.payload.profile,
         isAuthenticated: true
       };
     case SessionType.LOGIN_FAILURE:
@@ -25,7 +27,8 @@ const reducer: Reducer<SessionState> = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: true,
-        token: "",
+        token: undefined,
+        profile: undefined,
         isAuthenticated: false
       };
     default:

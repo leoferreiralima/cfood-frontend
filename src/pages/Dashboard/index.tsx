@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import api from "./../../services/api";
+import React from "react";
+import { ApplicationState } from "../../store";
+import { connect } from "react-redux";
+import { SessionState } from "../../store/ducks/session/types";
 
-const Dashboard: React.FC = () => {
-  const [user, setUser] = useState({});
-  useEffect(() => {
-    api.get("/auth/profile/").then(response => {
-      setUser(response.data);
-    });
-  }, []);
-  return <div>{JSON.stringify(user)}</div>;
+interface StateProps extends SessionState {}
+
+type Props = StateProps;
+
+const Dashboard: React.FC<Props> = ({ profile }) => {
+  return <div>{JSON.stringify(profile)}</div>;
 };
-
-export default Dashboard;
+const mapStateToProps = ({ session: { profile } }: ApplicationState) => ({
+  profile
+});
+export default connect(mapStateToProps)(Dashboard);

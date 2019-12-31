@@ -1,12 +1,8 @@
 import styled from "styled-components";
 import Background from "../../assets/img/background.svg";
 
-import { Container as BContainer, Button } from "react-bootstrap";
-import { ITheme } from "../../styles/theme";
+import { Container as BContainer } from "react-bootstrap";
 
-interface Props {
-  theme: ITheme;
-}
 export const Container = styled.div`
   background-image: linear-gradient(
       to top,
