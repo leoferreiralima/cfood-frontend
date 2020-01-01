@@ -2,6 +2,7 @@ import React from "react";
 import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Form, Input } from "@rocketseat/unform";
+import * as Yup from "yup";
 
 import * as SessionActions from "@ducks/session/actions";
 import { SessionState, ILogin } from "@ducks/session/types";
@@ -28,6 +29,15 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
+const formValidation = Yup.object().shape({
+  username: Yup.string()
+    .min(5)
+    .required(),
+  password: Yup.string()
+    .min(8)
+    .required()
+});
+
 const Login: React.FC<Props> = ({
   loading,
   error,
@@ -42,7 +52,7 @@ const Login: React.FC<Props> = ({
     <Container>
       <ContainerFluid>
         <Box className="col-lg-4 col-md-6 col-sm-9">
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} schema={formValidation}>
             <FormGroup className="col-md-12">
               <Image
                 rounded
@@ -52,7 +62,7 @@ const Login: React.FC<Props> = ({
               ></Image>
             </FormGroup>
             <FormGroup className="col-md-10">
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-3 text-primary font-weight-bold">
                 <InputGroup.Prepend>
                   <InputGroup.Text>
                     <FaUserAlt className="text-primary" />
@@ -66,7 +76,7 @@ const Login: React.FC<Props> = ({
               </InputGroup>
             </FormGroup>
             <FormGroup className="col-md-10">
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-3 text-primary font-weight-bold">
                 <InputGroup.Prepend>
                   <InputGroup.Text>
                     <FaLock className="text-primary" />

@@ -41,17 +41,19 @@ const Routes: React.FC<Props> = ({ isAuthenticated }) => {
       <Switch>
         <Route exact path="/login" component={Login}></Route>
 
-        {isAuthenticated &&
-          privateRoutes.map(({ path, container: component }) => (
-            <Template routes={privateRoutes} key={path}>
+        {isAuthenticated && (
+          <Template routes={privateRoutes}>
+            {privateRoutes.map(({ path, container: component }) => (
               <PrivateRoute
                 exact
                 path={path}
                 component={component}
                 hasAuthorization={isAuthenticated}
               ></PrivateRoute>
-            </Template>
-          ))}
+            ))}
+            <Redirect from="*" to="/dashboard" />
+          </Template>
+        )}
         {!isAuthenticated && <Redirect to="/login"></Redirect>}
       </Switch>
     </BrowserRouter>
