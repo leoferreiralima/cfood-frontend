@@ -9,3 +9,4 @@ const Card: React.FC<Props> = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>;
 };
 export default Card;
+
