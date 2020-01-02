@@ -6,6 +6,7 @@
     "@rocketseat/unform": "^1.6.1",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
@@ -26,9 +27,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -70,9 +69,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "gh-pages": "^2.1.1",
     "prettier": "^1.16.4",
     "react-app-rewired": "^2.1.5"
-  },
-  "homepage": "http://leoferreiralima.github.io/cfood-frontend"
+  }
 }
