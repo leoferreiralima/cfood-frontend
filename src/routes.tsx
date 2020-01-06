@@ -4,15 +4,16 @@ import { Dispatch, bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { ApplicationState } from "@store/index";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaUtensils } from "react-icons/fa";
 import Login from "@pages/Login";
 
 import * as SessionActions from "@ducks/session/actions";
 import PrivateRoute from "@components/PrivateRoute";
 import Dashboard from "@pages/Dashboard";
+import ProductItem from "@pages/ProductItem";
 import { IconType } from "react-icons/lib/cjs";
 
-import Template from "@pages/Template";
+import Template from "@components/Template";
 
 interface StateProps {
   isAuthenticated: boolean;
@@ -34,6 +35,12 @@ const Routes: React.FC<Props> = ({ isAuthenticated }) => {
       title: "Dashboard",
       container: Dashboard,
       icon: FaHome
+    },
+    {
+      path: "/product-item",
+      title: "Ingredientes",
+      container: ProductItem,
+      icon: FaUtensils
     }
   ];
   return (
@@ -45,13 +52,13 @@ const Routes: React.FC<Props> = ({ isAuthenticated }) => {
           <Template routes={privateRoutes}>
             {privateRoutes.map(({ path, container: component }) => (
               <PrivateRoute
+                key={path}
                 exact
                 path={path}
                 component={component}
                 hasAuthorization={isAuthenticated}
               ></PrivateRoute>
             ))}
-            <Redirect from="*" to="/dashboard" />
           </Template>
         )}
         {!isAuthenticated && <Redirect to="/login"></Redirect>}
