@@ -84,6 +84,8 @@ export const ContainerWrapper = styled.div`
 export const PageContainer = styled.div`
   max-width: 100%;
   height: 92vh;
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

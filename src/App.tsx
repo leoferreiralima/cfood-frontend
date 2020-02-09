@@ -13,6 +13,7 @@ import GlobalStyle from "./styles";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "semantic-ui-css/semantic.min.css";
 
 const App = () => (
   <Provider store={store}>

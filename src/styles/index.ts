@@ -243,16 +243,16 @@ export default createGlobalStyle`
   ::-webkit-scrollbar {
     width: 5px;
   }
-  ::-webkit-scrollbar-track {
+  body #root ::-webkit-scrollbar-track {
     box-shadow: -1px 0px 6px #22222222;
     border-radius: 5px;
     background-color: #00000000;
   }
-  ::-webkit-scrollbar-thumb {
+  body #root ::-webkit-scrollbar-thumb {
     background: ${({ theme }: Props) => theme.primary.bg + "99"};
     border-radius: 5px;
   }
-  ::-webkit-scrollbar-thumb:hover {
+  body #root ::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }: Props) => theme.primary.bg + "cc"};
   }
 

@@ -27,7 +27,7 @@ const Search: React.FC<Props> = ({ onSearch, search }) => {
 
   return (
     <Form onSubmit={handleSubmit} initialData={initialData}>
-      <InputGroup className="mb-3 text-primary font-weight-bold">
+      <InputGroup className="text-primary font-weight-bold">
         <Input
           name="search"
           className="form-control"

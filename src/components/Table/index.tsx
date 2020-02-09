@@ -2,11 +2,22 @@ import React, { useEffect, useState, useMemo } from "react";
 import { IDataTableColumn } from "react-data-table-component";
 
 import api from "@services/api";
-import { Loader, Container } from "./styles";
+
+import Filter, { IFilter } from "@components/Filter";
+
+import {
+  Loader,
+  Container,
+  DataTable,
+  FilterContainer,
+  Filters
+} from "./styles";
 import Search from "./Search";
+
 interface OwnProps {
   title?: string;
   columns: IDataTableColumn<any>[];
+  filters: IFilter[];
   url: string;
   defaultSortField: string;
 }
@@ -27,7 +38,13 @@ const paginationOptions = {
   rangeSeparatorText: "de"
 };
 
-const Table: React.FC<Props> = ({ title, columns, url, defaultSortField }) => {
+const Table: React.FC<Props> = ({
+  title,
+  columns,
+  url,
+  defaultSortField,
+  filters
+}) => {
   const [data, setData] = useState<Array<any>>([]);
   const [loading, setLoading] = useState(false);
   const [totalRows, setTotalRows] = useState(0);
@@ -62,8 +79,15 @@ const Table: React.FC<Props> = ({ title, columns, url, defaultSortField }) => {
       setSearch(search);
     };
 
-    return <Search onSearch={onSearch} search={search} />;
-  }, [search, resetPaginationToggle]);
+    return (
+      <FilterContainer>
+        <Search onSearch={onSearch} search={search} />
+        <Filters>
+          <Filter filters={filters} />
+        </Filters>
+      </FilterContainer>
+    );
+  }, [search, resetPaginationToggle, filters]);
 
   const handlePerRowsChange = (newPerPage: number, page: number) => {
     setPerPage(newPerPage);
@@ -77,27 +101,31 @@ const Table: React.FC<Props> = ({ title, columns, url, defaultSortField }) => {
   };
 
   return (
-    <Container
-      columns={columns}
-      data={data}
-      title={title}
-      persistTableHead
-      fixedHeader
-      progressPending={loading}
-      progressComponent={<Loader />}
-      pagination
-      paginationComponentOptions={paginationOptions}
-      paginationServer
-      paginationTotalRows={totalRows}
-      paginationResetDefaultPage={resetPaginationToggle}
-      onChangeRowsPerPage={handlePerRowsChange}
-      onChangePage={handlePageChange}
-      sortServer
-      onSort={handleSort}
-      defaultSortField={defaultSortField}
-      subHeader
-      subHeaderComponent={subHeaderComponentMemo}
-    />
+    <Container>
+      <DataTable
+        columns={columns}
+        data={data}
+        title={title}
+        persistTableHead
+        fixedHeader
+        fixedHeaderScrollHeight="90%"
+        progressPending={loading}
+        progressComponent={<Loader />}
+        pagination
+        paginationComponentOptions={paginationOptions}
+        paginationServer
+        paginationTotalRows={totalRows}
+        paginationResetDefaultPage={resetPaginationToggle}
+        onChangeRowsPerPage={handlePerRowsChange}
+        onChangePage={handlePageChange}
+        sortServer
+        onSort={handleSort}
+        defaultSortField={defaultSortField}
+        subHeader
+        subHeaderAlign="start"
+        subHeaderComponent={subHeaderComponentMemo}
+      />
+    </Container>
   );
 };
 export default Table;

@@ -2,6 +2,7 @@ import React from "react";
 import Table from "@components/Table";
 import { IDataTableColumn } from "react-data-table-component";
 import { format } from "date-fns";
+import { IFilter, FilterDataType } from "~/components/Filter";
 
 const columns: IDataTableColumn<any>[] = [
   {
@@ -24,12 +25,20 @@ const columns: IDataTableColumn<any>[] = [
   }
 ];
 
+const filters: IFilter[] = [
+  {
+    name: "ID",
+    selector: "id",
+    type: FilterDataType.NUMBER
+  }
+];
 const DataTable: React.FC = () => {
   return (
     <Table
       title="Lista de Ingredientes"
       url="/api/product-items/"
       columns={columns}
+      filters={filters}
       defaultSortField="id"
     />
   );

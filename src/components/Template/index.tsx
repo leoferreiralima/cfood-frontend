@@ -33,9 +33,7 @@ const Template: React.FC<Props> = ({ children, routes }) => {
             <FaArrowRight size={30} />
           </ToggleMenu>
           <AppBar />
-          <PageContainer>
-            <div className="container-fluid">{children}</div>
-          </PageContainer>
+          <PageContainer className="container-fluid">{children}</PageContainer>
         </Content>
       </ContainerWrapper>
     </Container>
